@@ -53,4 +53,11 @@ public class PessoasRepository {
         System.out.println(Pessoas.stream().filter(pessoa -> pessoa instanceof Professor && ((Professor) pessoa).getExperiencia() == experiencia).toList().toString());
 
     }
+
+    public static void listarPedagogos(){
+        System.out.println(Pessoas.stream().filter(pessoa -> pessoa instanceof Pedagogo).toList().toString());
+
+    }
+
+
 }

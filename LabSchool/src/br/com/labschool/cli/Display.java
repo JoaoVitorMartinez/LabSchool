@@ -189,6 +189,9 @@ public class Display {
         System.out.println("2 - Professores");
         System.out.println("3 - Pedagogo");
         System.out.println("4 - Todos");
+
+        String opcao = scan.nextLine();
+        imprimirRelatorio(opcao);
         
     }
 
@@ -219,11 +222,16 @@ public class Display {
                 imprimirRelatorioProfessores(input);
                 break;
             case "3":
+                PessoasRepository.listarPedagogos();
+
                 break;
             case "4":
                 PessoasRepository.listarTodos();
                 break;
             default:
+                System.out.println("Opção inválida! Tente novamente...");
+                menuRelatorios();
+
 
                 break;
         }
@@ -280,8 +288,6 @@ public class Display {
             default:
                 System.out.print("Digite uma opção válida!");
                 imprimirRelatorio("2");
-                opcao = scan.nextLine();
-                imprimirRelatorioProfessores(opcao);
 
                 break;
 

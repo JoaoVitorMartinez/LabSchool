@@ -116,10 +116,8 @@ public class Principal {
                     break;
                 case "6":
                     display.menuRelatorios();
-                    input = scan.nextLine();
-                    display.imprimirRelatorio(input);
 
-                    display.imprimirRelatorioAlunos(input);
+
 
 
                     break;
