@@ -15,12 +15,12 @@ public class PessoasRepository {
 
     public static void RegistrarAtendimento(String nomeAluno, String nomePedagogo){
         for (int i = 0; i < Pessoas.size(); i++) {
-            if (nomeAluno.equals(Pessoas.get(i).getNome())) {
+            if (nomeAluno.equals(Pessoas.get(i).getNome()) && Pessoas.get(i) instanceof Aluno) {
                 Aluno aluno = (Aluno) Pessoas.get(i);
                 aluno.registraAtendimento();
                 aluno.setSituacaoDaMatricula("Atendimento Pedagógico");
             }
-            if (nomePedagogo.equals(Pessoas.get(i).getNome())) {
+            if (nomePedagogo.equals(Pessoas.get(i).getNome())  && Pessoas.get(i) instanceof Pedagogo) {
                 Pedagogo pedagogo = (Pedagogo) Pessoas.get(i);
                 pedagogo.realizarAtendimento();
             }

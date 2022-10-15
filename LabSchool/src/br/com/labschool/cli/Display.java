@@ -258,11 +258,6 @@ public class Display {
             default:
                 System.out.print("Digite uma opção válida!");
                 imprimirRelatorio("1");
-                Scanner scan = new Scanner(System.in);
-                opcao = scan.nextLine();
-                imprimirRelatorioAlunos(opcao);
-
-
 
                 break;
 
