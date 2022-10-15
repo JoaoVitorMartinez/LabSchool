@@ -1,5 +1,6 @@
 package br.com.labschool.cli;
 
+import br.com.labschool.exception.InputException;
 import br.com.labschool.model.Aluno;
 import br.com.labschool.model.Pedagogo;
 import br.com.labschool.model.Professor;
@@ -44,6 +45,18 @@ public class Display {
 
     }
 
+    public void alterarSituacaoDeMatricula(String nomeAluno, String situacaoDaMatricula){
+
+        aluno = PessoasRepository.retornaAlunoPorNome(nomeAluno);
+        aluno.setSituacaoDaMatricula(situacaoDaMatricula);
+
+        if (situacaoDaMatricula == "Atendimento Pedagógico"){
+            System.out.println("Nome do Pedagogo:");
+            String nomePedagogo = scan.nextLine();
+            registrarAtendimento(nomeAluno, nomePedagogo);
+        }
+    }
+
     public String menuSituacaoDaMatricula(){
         System.out.println();
         Scanner scan = new Scanner(System.in);
@@ -73,8 +86,12 @@ public class Display {
                 break;
 
             default:
-                System.out.println("Opção inválida! Tente novamente...");
-                menuSituacaoDaMatricula();
+                try {
+                    throw new InputException("Você digitou uma opção inválida, vamos tentar novamente...");
+
+                } catch (InputException e) {
+                    System.out.println(e.getMessage());;
+                }
                 break;
         }
 
@@ -84,7 +101,7 @@ public class Display {
     public String menuFormacaoAcademica(){
         System.out.println();
         Scanner scan = new Scanner(System.in);
-        System.out.println("Qual a formação acadêmica do professor:\n" +
+        System.out.println("Qual a formação acadêmica do professor?\n" +
                 "1 - Graduação incompleta\n" +
                 "2 - Graduação completa\n" +
                 "3 - Mestrado\n" +
@@ -110,7 +127,12 @@ public class Display {
                 break;
 
             default:
-                System.out.println("Opção inválida! Tente novamente...");
+                try {
+                    throw new InputException("Você digitou uma opção inválida, vamos tentar novamente...");
+
+                } catch (InputException e) {
+                    System.out.println(e.getMessage());;
+                }
                 formacaoAcademica = menuFormacaoAcademica();
                 break;
         }
@@ -142,10 +164,13 @@ public class Display {
 
 
             default:
+                try {
+                    throw new InputException("Você digitou uma opção inválida, vamos tentar novamente...");
+
+                } catch (InputException e) {
+                    System.out.println(e.getMessage());;
+                }
                 experiencia = menuExperienciaDesenvolvimento();
-
-                System.out.println("Opção inválida! Tente novamente...");
-
                 break;
         }
 
@@ -229,7 +254,12 @@ public class Display {
                 PessoasRepository.listarTodos();
                 break;
             default:
-                System.out.println("Opção inválida! Tente novamente...");
+                try {
+                    throw new InputException("Você digitou uma opção inválida, vamos tentar novamente...");
+
+                } catch (InputException e) {
+                    System.out.println(e.getMessage());;
+                }
                 menuRelatorios();
 
 
@@ -256,7 +286,12 @@ public class Display {
                 PessoasRepository.listarTodosAlunos();
                 break;
             default:
-                System.out.print("Digite uma opção válida!");
+                try {
+                    throw new InputException("Você digitou uma opção inválida, vamos tentar novamente...");
+
+                } catch (InputException e) {
+                    System.out.println(e.getMessage());;
+                }
                 imprimirRelatorio("1");
 
                 break;
@@ -281,7 +316,12 @@ public class Display {
                 PessoasRepository.listarTodosProfessores();
                 break;
             default:
-                System.out.print("Digite uma opção válida!");
+                try {
+                    throw new InputException("Você digitou uma opção inválida, vamos tentar novamente...");
+
+                } catch (InputException e) {
+                    System.out.println(e.getMessage());;
+                }
                 imprimirRelatorio("2");
 
                 break;

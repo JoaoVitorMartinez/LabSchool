@@ -1,6 +1,7 @@
 package br.com.labschool;
 
 import br.com.labschool.cli.Display;
+import br.com.labschool.exception.InputException;
 import br.com.labschool.model.Aluno;
 import br.com.labschool.model.Pedagogo;
 import br.com.labschool.model.Pessoa;
@@ -32,7 +33,7 @@ public class Principal {
                     System.out.print("\nData de nascimento (01/01/1900):");
                     String dataDeNascimento = scan.nextLine();
 
-                    System.out.print("\nCPF:");
+                    System.out.print("\nCPF (sem pontos ou hífens):");
                     String cpf = scan.nextLine();
 
                     System.out.print("\nSituação da matrícula:");
@@ -48,6 +49,11 @@ public class Principal {
 
                     break;
                 case "2":
+                    System.out.print("\nNome do Aluno: ");
+                    nome = scan.nextLine();
+                    situacaoDaMatricula = display.menuSituacaoDaMatricula();
+
+                    display.alterarSituacaoDeMatricula(nome, situacaoDaMatricula);
 
 
 
@@ -62,7 +68,7 @@ public class Principal {
                     System.out.print("\nData de nascimento (01/01/1900): ");
                     dataDeNascimento = scan.nextLine();
 
-                    System.out.print("\nCPF:");
+                    System.out.print("\nCPF (sem pontos ou hífens):");
                     cpf = scan.nextLine();
 
                     System.out.print("\nFormação Acadêmica: ");
@@ -96,7 +102,7 @@ public class Principal {
                     System.out.print("\nData de nascimento (01/01/1900):");
                     dataDeNascimento = scan.nextLine();
 
-                    System.out.print("\nCPF:");
+                    System.out.print("\nCPF (sem pontos ou hífens):");
                     cpf = scan.nextLine();
 
                     display.cadastrarPedagogo(nome, telefone, dataDeNascimento, cpf);
@@ -126,10 +132,10 @@ public class Principal {
                     break;
                 default:
                     try {
-                        throw new Exception();
+                        throw new InputException("Você digitou uma opção inválida, vamos tentar novamente...");
 
-                    } catch (Exception e) {
-                        System.out.println("Você digitou uma opção inválida, vamos tentar novamente...");
+                    } catch (InputException e) {
+                        System.out.println(e.getMessage());;
                     }
                     break;
             }
