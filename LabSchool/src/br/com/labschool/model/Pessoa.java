@@ -24,12 +24,9 @@ public class Pessoa {
     }
 
 
-
     @Override
     public String toString() {
-        return "Codigo= " + codigo +
-                ", Nome= " + nome +
-                ", CPF= " + cpf;
+        return "Codigo= " + codigo + ", Nome= " + nome + ", CPF= " + cpf;
     }
 
     public int getCodigo() {
@@ -40,15 +37,5 @@ public class Pessoa {
         return nome;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
 
-    public LocalDate getDataDeNascimento() {
-        return dataDeNascimento;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
 }

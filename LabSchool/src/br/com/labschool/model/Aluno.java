@@ -2,7 +2,7 @@ package br.com.labschool.model;
 
 import java.time.LocalDate;
 
-public class Aluno extends Pessoa{
+public class Aluno extends Pessoa {
 
     private String situacaoDaMatricula;
     private double nota;
@@ -22,31 +22,23 @@ public class Aluno extends Pessoa{
         this.totalDeAtendimentosPedagogicos = 0;
     }
 
-    public Aluno Cadastrar(String nome, String telefone, LocalDate dataDeNascimento, String cpf, String situacaoDaMatricula, double nota){
+    public Aluno Cadastrar(String nome, String telefone, LocalDate dataDeNascimento, String cpf, String situacaoDaMatricula, double nota) {
         return new Aluno(nome, telefone, dataDeNascimento, cpf, situacaoDaMatricula, nota);
     }
 
-    public void registraAtendimento(){
+    public void registraAtendimento() {
         this.totalDeAtendimentosPedagogicos++;
     }
 
     @Override
     public String toString() {
-        return "Código= " +
-                super.getCodigo()+
-                ", Nome= "+
-                super.getNome()+
-                ", Nota=" + nota +
-                ", AtendimentosPedagogicos= " + totalDeAtendimentosPedagogicos;
+        return "Código= " + super.getCodigo() + ", Nome= " + super.getNome() + ", Nota=" + nota + ", AtendimentosPedagogicos= " + totalDeAtendimentosPedagogicos;
     }
 
     public String getSituacaoDaMatricula() {
         return this.situacaoDaMatricula;
     }
 
-    public double getNota() {
-        return this.nota;
-    }
 
     public int getTotalDeAtendimentosPedagogicos() {
         return this.totalDeAtendimentosPedagogicos;

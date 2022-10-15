@@ -2,7 +2,7 @@ package br.com.labschool.model;
 
 import java.time.LocalDate;
 
-public class Professor extends Pessoa{
+public class Professor extends Pessoa {
     private String formacaoAcademica;
     private String experiencia;
     private Boolean estado;
@@ -11,7 +11,7 @@ public class Professor extends Pessoa{
     }
 
     public Professor(String nome, String telefone, LocalDate dataDeNascimento, String cpf) {
-        super( nome, telefone, dataDeNascimento, cpf);
+        super(nome, telefone, dataDeNascimento, cpf);
     }
 
     public Professor(String nome, String telefone, LocalDate dataDeNascimento, String cpf, String formacaoAcademica, String experiencia, Boolean estado) {
@@ -21,7 +21,7 @@ public class Professor extends Pessoa{
         this.estado = estado;
     }
 
-    public Professor Cadastrar(String nome, String telefone, LocalDate dataDeNascimento, String cpf, String formacaoAcademica, String experiencia, Boolean estado){
+    public Professor Cadastrar(String nome, String telefone, LocalDate dataDeNascimento, String cpf, String formacaoAcademica, String experiencia, Boolean estado) {
         return new Professor(nome, telefone, dataDeNascimento, cpf, formacaoAcademica, experiencia, estado);
     }
 
@@ -30,22 +30,16 @@ public class Professor extends Pessoa{
         return "Código= " +
                 super.getCodigo() +
                 ", Nome= " +
-                super.getNome()+
-                ", Formação Acadêmica= "+
-                formacaoAcademica+
+                super.getNome() +
+                ", Formação Acadêmica= " +
+                formacaoAcademica +
                 ", Experiencia= " + experiencia + '\'' +
                 ", Estado= " + estado;
     }
 
-    public String getFormacaoAcademica() {
-        return formacaoAcademica;
-    }
 
     public String getExperiencia() {
         return experiencia;
     }
 
-    public Boolean getEstado() {
-        return estado;
-    }
 }

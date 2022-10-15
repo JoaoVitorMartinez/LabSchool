@@ -1,6 +1,6 @@
 package br.com.labschool.exception;
 
-public class InputException extends RuntimeException{
+public class InputException extends RuntimeException {
     private String messagem;
 
     public InputException(String messagem) {

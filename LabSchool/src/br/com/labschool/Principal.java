@@ -2,12 +2,7 @@ package br.com.labschool;
 
 import br.com.labschool.cli.Display;
 import br.com.labschool.exception.InputException;
-import br.com.labschool.model.Aluno;
-import br.com.labschool.model.Pedagogo;
-import br.com.labschool.model.Pessoa;
-import br.com.labschool.repository.PessoasRepository;
 
-import javax.management.ObjectInstance;
 import java.util.Scanner;
 
 public class Principal {
@@ -19,22 +14,22 @@ public class Principal {
             Display display = new Display();
             Scanner scan = new Scanner(System.in);
             display.menu();
-            opcao = scan.nextLine();
+            opcao = display.capturaInputDoUsuario();
 
             switch (opcao) {
                 case "1":
 
                     System.out.print("\nNome do aluno:");
-                    String nome = scan.nextLine();
+                    String nome = display.capturaInputDoUsuario();
 
                     System.out.print("\nTelefone:");
-                    String telefone = scan.nextLine();
+                    String telefone = display.capturaInputDoUsuario();
 
                     System.out.print("\nData de nascimento (01/01/1900):");
-                    String dataDeNascimento = scan.nextLine();
+                    String dataDeNascimento = display.capturaInputDoUsuario();
 
                     System.out.print("\nCPF (sem pontos ou hífens):");
-                    String cpf = scan.nextLine();
+                    String cpf = display.capturaInputDoUsuario();
 
                     System.out.print("\nSituação da matrícula:");
                     String situacaoDaMatricula = display.menuSituacaoDaMatricula();
@@ -45,65 +40,60 @@ public class Principal {
                     display.cadastrarAluno(nome, telefone, dataDeNascimento, cpf, situacaoDaMatricula, nota);
 
 
-
-
                     break;
                 case "2":
                     System.out.print("\nNome do Aluno: ");
-                    nome = scan.nextLine();
+                    nome = display.capturaInputDoUsuario();
                     situacaoDaMatricula = display.menuSituacaoDaMatricula();
 
                     display.alterarSituacaoDeMatricula(nome, situacaoDaMatricula);
 
 
-
                     break;
                 case "3":
                     System.out.print("\nNome do Professor: ");
-                    nome = scan.nextLine();
+                    nome = display.capturaInputDoUsuario();
 
                     System.out.print("\nTelefone:");
-                    telefone = scan.nextLine();
+                    telefone = display.capturaInputDoUsuario();
 
                     System.out.print("\nData de nascimento (01/01/1900): ");
-                    dataDeNascimento = scan.nextLine();
+                    dataDeNascimento = display.capturaInputDoUsuario();
 
                     System.out.print("\nCPF (sem pontos ou hífens):");
-                    cpf = scan.nextLine();
+                    cpf = display.capturaInputDoUsuario();
 
                     System.out.print("\nFormação Acadêmica: ");
                     String formacaoAcademica = display.menuFormacaoAcademica();
 
-                    System.out.print("\nExperiência de desenvolvimento: " );
+                    System.out.print("\nExperiência de desenvolvimento: ");
                     String experiencia = display.menuExperienciaDesenvolvimento();
 
-                    System.out.print("\n Ativo? s/ ");
+                    System.out.print("\n Ativo? s/n ");
                     Boolean estado = false;
-                    String input = scan.nextLine().toUpperCase();
+                    String input = display.capturaInputDoUsuario().toUpperCase();
 
-                    if( input.equals("S")){
+                    if (input.equals("S")) {
                         estado = true;
 
                     }
-                    System.out.println(estado);
 
                     display.cadastrarProfessor(nome, telefone, dataDeNascimento, cpf, formacaoAcademica, experiencia, estado);
-
 
 
                     break;
                 case "4":
                     System.out.print("\nNome do pedagogo:");
-                    nome = scan.nextLine();
+                    nome = display.capturaInputDoUsuario();
 
                     System.out.print("\nTelefone:");
-                    telefone = scan.nextLine();
+                    telefone = display.capturaInputDoUsuario();
 
                     System.out.print("\nData de nascimento (01/01/1900):");
-                    dataDeNascimento = scan.nextLine();
+                    dataDeNascimento = display.capturaInputDoUsuario();
 
                     System.out.print("\nCPF (sem pontos ou hífens):");
-                    cpf = scan.nextLine();
+                    cpf = display.capturaInputDoUsuario();
 
                     display.cadastrarPedagogo(nome, telefone, dataDeNascimento, cpf);
 
@@ -111,31 +101,28 @@ public class Principal {
                 case "5":
                     System.out.println();
                     System.out.println("Nome do Aluno: ");
-                    String nomeAluno = scan.nextLine();
+                    String nomeAluno = display.capturaInputDoUsuario();
                     System.out.println("Nome do Pedagogo");
-                    String nomePedagogo = scan.nextLine();
+                    String nomePedagogo = display.capturaInputDoUsuario();
 
                     display.registrarAtendimento(nomeAluno, nomePedagogo);
-
 
 
                     break;
                 case "6":
                     display.menuRelatorios();
 
-
-
-
                     break;
                 case "7":
-                    System.out.println("Saiu do programa");
+                    System.out.println("\u001B[41mSaiu do programa\u001B[0m");
                     break;
                 default:
                     try {
-                        throw new InputException("Você digitou uma opção inválida, vamos tentar novamente...");
+                        throw new InputException("\u001B[31mVocê digitou uma opção inválida, vamos tentar novamente...");
 
                     } catch (InputException e) {
-                        System.out.println(e.getMessage());;
+                        System.err.println(e.getMessage());
+                        ;
                     }
                     break;
             }
